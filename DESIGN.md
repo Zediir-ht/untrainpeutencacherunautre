@@ -12,6 +12,9 @@ colors:
   papier-os: "#fff6e2"
   ciel-vitre: "#bfe6ff"
   rouge-tampon: "#b81d08"
+  papier-hachure: "#ece0c2"
+  encre-douce: "#5a5480"
+  rose-erreur: "#fff0ec"
 typography:
   display:
     fontFamily: "Bagel Fat One, Arial Rounded MT Bold, sans-serif"
@@ -41,6 +44,7 @@ typography:
     lineHeight: 1.3
     letterSpacing: "0.04em"
 rounded:
+  xs: "4px"
   plaque: "6px"
   champ: "8px"
   wagon: "12px 12px 5px 5px"
@@ -140,6 +144,9 @@ Palette pleine de cinq teintes saturées de livrée, posée sur une encre bleu-n
 ### Neutral
 - **Encre Bleu-Nuit** (ink) : tout le texte posé sur papier, tous les contours, les roues, les toits, le pied de page et la livrée de la page Photos. C'est la seule « couleur sombre » du système.
 - **Papier Os** (papier-os) : le papier par défaut des morceaux déchirés, les plaques émaillées, les rayons des roues.
+- **Papier Hachure** (papier-hachure) : la seconde teinte des hachures « pas encore disponible » (récaps à intégrer, billet désactivé).
+- **Encre Douce** (encre-douce) : uniquement le texte d’exemple des champs (placeholder), 4,6:1 sur blanc.
+- **Rose Erreur** (rose-erreur) : le fond d’un champ refusé.
 - **Rouge Tampon** (rouge-tampon) : uniquement pour l'encre des tampons (« Jusqu'à 66 % », « Fragile, art actuel ») et les messages d'erreur. C'est une version foncée de la tomate, qui passe le contraste sur papier os.
 
 ### Named Rules
@@ -158,11 +165,14 @@ Palette pleine de cinq teintes saturées de livrée, posée sur une encre bleu-n
 **Character:** une linogravure dodue pour crier les titres comme une affiche de fête de village, une grotesque à caractère pour lire confortablement, et une machine à écrire pour tout ce qui est tamponné, composté ou imprimé sur un billet. Les trois polices sont auto-hébergées dans `assets/fonts/`.
 
 ### Hierarchy
-- **Display** (400, clamp(2.3rem, 6.2vw, 5.4rem), 1) : le titre de l'accueil et les titres de page, toujours en mots-rançon majuscules. Plafond 5,4rem sur l'accueil, 5,2rem ailleurs.
+- **Display** (400, clamp(2.3rem, 6.2vw, 5.4rem), 1) : le titre de l'accueil et les titres de page, toujours en mots-rançon majuscules. Plafond de 5,4rem sur toutes les pages.
 - **Headline** (400, clamp(2rem, 4.8vw, 3.7rem), 1.02) : titres de section, suivis d'un bout de voie dessiné dessous.
 - **Title** (400, clamp(1.3rem, 2.2vw, 1.7rem), 1.02) : titres à l'intérieur des papiers, wagons du menu, plaques.
 - **Body** (450, 1.0625rem, 1.55) : texte courant, largeur maximale 62ch. Le gras (700 à 800) sert aux noms d'artistes et aux liens.
-- **Label** (400, 0.8 à 0.95rem, 0.04em, souvent en majuscules) : dates, lieux, petites lignes des billets, étiquettes de champs, tampons.
+- **Label** (400, 0.85rem, 0.04em, souvent en majuscules) : dates, lieux, petites lignes des billets, étiquettes de champs, tampons.
+
+### Échelle
+Toutes les tailles hors titres fluides passent par huit marches : 0.75 · 0.85 · 0.95 · 1.05 · 1.25 · 1.5 · 1.9 · 2.4rem (variables `--fs-2xs` à `--fs-3xl`). Seule exception : l’inscription « Fragile, art actuel » dessinée sur les wagons de fret (0.6rem), qui fait partie du dessin et non du texte.
 
 ### Named Rules
 **The Rançon Rule.** Un titre de page se compose de mots séparés, chacun sur un papier de couleur différente, avec une rotation de ±1 à 3°. Un mot sur deux ou trois peut changer de police (Special Elite ou Bricolage 800) pour l'effet découpé.
@@ -195,6 +205,8 @@ La profondeur vient du papier posé sur le mur : chaque morceau porte une ombre 
 Deux familles de formes cohabitent. **Le papier déchiré** : rectangles dont les quatre bords sont découpés par un polygone irrégulier, généré de façon déterministe par élément, avec 3 à 6px d'amplitude. **La tôle de train** : formes arrondies et épaisses, toits bombés (rayon 14px en haut), caisses à 5px, wagons du menu à 12px en haut et 5px en bas, roues parfaitement rondes à rayons.
 
 Les billets sont des rectangles avec deux **encoches semi-circulaires** de 11px sur les côtés (masque radial), et les billets d'expo une perforation pointillée entre souche et corps. Les champs ont un rayon de 8px et les choix une forme de pastille.
+
+Les arrondis d’interface se limitent à cinq valeurs (4, 6, 8px, le wagon 12/12/5/5px, la pastille). Les pièces dessinées des trains (toits, tampons, fenêtres) gardent leurs propres rayons : ce sont des illustrations, pas des composants.
 
 **The Pas de Rond Parfait Rule.** Un papier n'est jamais un rectangle net : s'il n'est pas déchiré, c'est qu'il est en tôle (wagon), en carton (billet) ou en émail (plaque).
 

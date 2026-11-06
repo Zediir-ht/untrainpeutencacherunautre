@@ -153,6 +153,51 @@
           "#eabbb5",
           "#f6e4e1"
         ]
+      },
+      "papier-hachure": {
+        "role": "neutral",
+        "displayName": "Papier Hachure",
+        "canonical": "#ece0c2",
+        "tonalRamp": [
+          "#3b3830",
+          "#6a6557",
+          "#99927e",
+          "#c9bea5",
+          "#f1e8d1",
+          "#f6f0e0",
+          "#f9f6ed",
+          "#fdfbf8"
+        ]
+      },
+      "encre-douce": {
+        "role": "neutral",
+        "displayName": "Encre Douce",
+        "canonical": "#5a5480",
+        "tonalRamp": [
+          "#161520",
+          "#28263a",
+          "#3a3753",
+          "#4c476d",
+          "#837fa0",
+          "#acaac0",
+          "#ceccd9",
+          "#ebeaf0"
+        ]
+      },
+      "rose-erreur": {
+        "role": "neutral",
+        "displayName": "Rose Erreur",
+        "canonical": "#fff0ec",
+        "tonalRamp": [
+          "#403c3b",
+          "#736c6a",
+          "#a69c99",
+          "#d9ccc9",
+          "#fff4f1",
+          "#fff8f6",
+          "#fffaf9",
+          "#fffdfd"
+        ]
       }
     },
     "typographyMeta": {
@@ -229,6 +274,16 @@
         "name": "compact",
         "value": "560px"
       }
+    ],
+    "typeScale": [
+      "0.75rem",
+      "0.85rem",
+      "0.95rem",
+      "1.05rem",
+      "1.25rem",
+      "1.5rem",
+      "1.9rem",
+      "2.4rem"
     ]
   },
   "components": [

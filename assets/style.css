@@ -397,7 +397,8 @@ section { padding-block: clamp(3.5rem, 8vw, 7rem); }
 /* ============ Mouvement réduit ============ */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  /* moins de mouvement, pas moins d'information : on coupe les déplacements, on garde les fondus */
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-property: opacity, color, background-color, border-color, box-shadow !important; transition-duration: 0.2s !important; }
   .puff { display: none; }
 }
 
@@ -711,3 +712,14 @@ html.arriving body::after { content: ""; position: fixed; inset: 0; z-index: 94;
   .ransom .scrap, .collage > .scrap, .board > .scrap, .ways > .scrap, .news > .scrap, .shop > .scrap, .contact-grid > .scrap, .stop > .scrap, .frame, .notes > .scrap, .depot > a { animation: none !important; }
   .field input.shake { animation: none; }
 }
+
+/* ============ Harden ============ */
+/* mouvement réduit : le train de devant s'efface au lieu de partir, celui de derrière ne bouge pas */
+@media (prefers-reduced-motion: reduce) {
+  .rails[data-lifted="true"] .track--front { transform: none; opacity: 0; visibility: hidden; transition: opacity 0.25s ease-out, visibility 0s 0.25s !important; }
+  .rails[data-lifted="true"] .track--back { transform: none; }
+  .rails .track--back .wagon__plate { transform: translateX(-50%) !important; }
+  .js .nav-wrap[data-open="true"], .sent[data-show="true"] { translate: none; rotate: none; }
+}
+/* champs obligatoires signalés visuellement */
+.req { display: inline-block; margin-left: 0.5rem; padding: 0.1rem 0.4rem; font: 400 var(--fs-2xs)/1.2 var(--f-stamp); text-transform: uppercase; letter-spacing: 0.04em; color: var(--stamp-red); border: 2px solid currentColor; border-radius: var(--r-xs); transform: rotate(-3deg); vertical-align: 0.1em; }

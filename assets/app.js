@@ -122,6 +122,31 @@
     }
   }
 
+  /* ---------- menu mobile ---------- */
+  const toggle = document.querySelector(".menu-toggle"), navWrap = document.querySelector(".nav-wrap");
+  if (toggle && navWrap) {
+    toggle.addEventListener("click", () => {
+      const open = navWrap.dataset.open !== "true";
+      navWrap.dataset.open = String(open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.querySelector("[data-label]").textContent = open ? "Refermer" : "Tous les wagons";
+    });
+  }
+
+  /* ---------- recherche d'artistes ---------- */
+  const finder = document.querySelector("#cherche-artiste");
+  if (finder) {
+    const norm = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+    const items = [...document.querySelectorAll("[data-name]")], out = document.querySelector("#cherche-resultat"), empty = document.querySelector(".empty-state");
+    finder.addEventListener("input", () => {
+      const q = norm(finder.value.trim());
+      let n = 0;
+      items.forEach((li) => { const hit = !q || norm(li.dataset.name).includes(q); li.hidden = !hit; if (hit) n++; });
+      out.textContent = q ? `${n} voyageur${n > 1 ? "s" : ""} trouvé${n > 1 ? "s" : ""}` : "";
+      empty.dataset.show = String(q && n === 0);
+    });
+  }
+
   /* ---------- formulaire démo ---------- */
   const form = document.querySelector("[data-demo-form]");
   if (form) {

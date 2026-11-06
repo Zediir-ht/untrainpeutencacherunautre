@@ -7,12 +7,14 @@
 <meta name="description" content="Association d’artistes de Cazals (Lot) qui promeut l’art contemporain en milieu rural depuis 2009. Adhérer, donner, voir les expositions.">
 <meta name="theme-color" content="#2338ff">
 <link rel="stylesheet" href="assets/style.css">
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body data-page="home">
 <a class="skip" href="#main">Aller au contenu</a>
 <header class="top wrap">
   <a class="brand scrap scrap--tight" href="index.html" aria-label="Un train peut en cacher un autre, accueil"><svg viewBox="0 0 52 34" aria-hidden="true" stroke="#15103c" stroke-width="2.5" stroke-linejoin="round"><rect x="16" y="3" width="34" height="19" rx="5" fill="#ff4b2b"/><rect x="3" y="11" width="34" height="17" rx="5" fill="#2338ff"/><circle cx="11" cy="29" r="4" fill="#fff6e2"/><circle cx="29" cy="29" r="4" fill="#fff6e2"/><circle cx="24" cy="12" r="0" /></svg><span>Un train peut<br>en cacher un autre</span></a>
-  <nav aria-label="Navigation principale"><ul class="nav-train"><li><a href="index.html" aria-current="page">Accueil</a></li><li><a href="historique.html">Historique</a></li><li><a href="adherer.html">Adhérer</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu"><span data-label>Tous les wagons</span><small>11 rubriques</small></button>
+  <nav class="nav-wrap" id="menu" aria-label="Navigation principale"><ul class="nav-train " aria-label="Rubriques principales"><li><a href="index.html" aria-current="page">Accueil</a></li><li><a href="actualite.html">Actualité</a></li><li><a href="artistes.html">Les artistes</a></li><li><a href="historique.html">Historique</a></li><li><a href="adherer.html">Adhérer</a></li><li><a href="contact.html">Contact</a></li></ul><ul class="nav-train nav-train--freight" aria-label="Autres rubriques"><li><a href="photos.html">Photos / vidéos</a></li><li><a href="cours.html">Cours et stages</a></li><li><a href="livredor.html">Livre d’or</a></li><li><a href="boutique.html">Boutique</a></li><li><a href="liens.html">Liens</a></li></ul></nav>
 </header>
 
 <main id="main">
@@ -71,7 +73,7 @@
 <section class="wrap" aria-labelledby="bord">
   <h2 id="bord">Monter à bord, sans se ruiner</h2>
   <div class="board">
-    <div class="scrap p1"><span class="rubber"><b>Jusqu’à 66 %</b>de déduction fiscale sur les dons</span><p>Les dons faits à l’association ouvrent droit à une déduction fiscale pouvant aller jusqu’à 66 %.</p><a class="more-link" href="adherer.html#donner">En savoir plus</a></div>
+    <div class="scrap p1"><span class="rubber"><b>Jusqu’à 66 %</b>de déduction fiscale sur les dons</span><p>Les dons faits à l’association ouvrent droit à une déduction fiscale pouvant aller jusqu’à 66 %.</p><a class="more-link" href="adherer.html#donner">Comment ça marche</a></div>
     <div class="scrap p2"><h3>Des jours de congés ?</h3><p>Le décret d’application de la loi de 2024 autorisant le don de jours de congés est paru.</p><a class="more-link" href="adherer.html#conges">En savoir plus</a></div>
     <div class="scrap p3"><h3>Acheter une œuvre</h3><p>D’autres déductions fiscales existent pour l’achat d’œuvres d’art.</p><a class="more-link" href="adherer.html#acheter">En savoir plus</a></div>
     <div class="scrap p4"><h3>Artiste, ou pas encore ?</h3><p>Adhérer, c’est sortir de l’isolement et rejoindre celles et ceux qui montent les expos ensemble.</p><div class="tickets"><a class="ticket" href="adherer.html"><small>Guichet</small><strong>Prendre ma carte</strong></a></div></div>
@@ -82,19 +84,16 @@
   <div class="wrap">
     <h2 id="rapport">Rapport d’étape 2009-2014</h2>
     <div class="collage" style="grid-template-columns:repeat(12,1fr)">
-      <div class="scrap a" style="grid-column:1 / span 6;--c:var(--bone)"><p>Deux PDF sont en ligne sur le site actuel. Pour la version papier, s’adresser à <a href="mailto:lezateliers@orange.fr">lezateliers@orange.fr</a>.</p><div class="tickets"><a class="ticket" href="https://untrainpeutencacherunautre.com/"><small>Sur le site actuel</small><strong>Version 1</strong></a><a class="ticket" href="https://untrainpeutencacherunautre.com/"><small>Sur le site actuel</small><strong>Version 2</strong></a></div></div>
-      <div class="scrap c" style="grid-column:8 / span 5;--c:var(--mustard)"><h3>Appel à projet</h3><p>Celui de 2015 est resté dans les annales. Les prochains appels apparaîtront ici dès qu’ils seront ouverts.</p></div>
+      <div class="scrap a" style="grid-column:1 / span 6;--c:var(--bone)"><p>Deux versions sont en ligne. Pour la version papier, s’adresser à <a href="mailto:lezateliers@orange.fr">lezateliers@orange.fr</a>.</p><div class="tickets"><a class="ticket" href="http://fr.calameo.com/read/004282332490dbab136a6" target="_blank" rel="noopener"><small>À feuilleter</small><strong>Version 1</strong></a><a class="ticket" href="https://www.untrainpeutencacherunautre.com/images/rapportdetape.pdf" target="_blank" rel="noopener"><small>PDF</small><strong>Version 2</strong></a></div></div>
+      <div class="scrap c" style="grid-column:8 / span 5;--c:var(--mustard)"><h3>Appel à projet</h3><p>Les appels à candidatures sont publiés dans l’<a href="actualite.html">actualité</a>. Celui de 2015, <a href="https://www.untrainpeutencacherunautre.com/images/appel2015.pdf" target="_blank" rel="noopener">pour rappel</a>.</p></div>
     </div>
   </div>
 </section>
 
 <section class="wrap" aria-labelledby="wagons">
-  <h2 id="wagons">Les wagons pas encore attelés</h2>
-  <p>Le site actuel compte d’autres rubriques. Elles montent dans le train à l’étape suivante de la maquette.</p>
-  <ul class="unhooked">
-    <li>Actualité<small>pas encore attelé</small></li><li>Les artistes<small>pas encore attelé</small></li><li>Photos / vidéos<small>pas encore attelé</small></li>
-    <li>Cours et stages<small>pas encore attelé</small></li><li>Livre d’or<small>pas encore attelé</small></li><li>Boutique<small>pas encore attelé</small></li><li>Liens<small>pas encore attelé</small></li>
-  </ul>
+  <h2 id="wagons">Tous les wagons</h2>
+  <p>Le reste du convoi : une rubrique par wagon, un passager par fenêtre.</p>
+  <div class="depot"><a class="scrap" href="actualite.html"><span class="win" data-pax="egg" aria-hidden="true"></span><strong>Actualité</strong><span>Expos, appels à candidatures et journées d’ateliers de la saison.</span></a><a class="scrap" href="artistes.html"><span class="win" data-pax="moustache" aria-hidden="true"></span><strong>Les artistes</strong><span>Les voyageurs à jour de leur billet, et tous ceux passés depuis 2009.</span></a><a class="scrap" href="photos.html"><span class="win" data-pax="eye" aria-hidden="true"></span><strong>Photos / vidéos</strong><span>Albums, captations et diaporamas des expos.</span></a><a class="scrap" href="cours.html"><span class="win" data-pax="cow" aria-hidden="true"></span><strong>Cours et stages</strong><span>Des artistes ouvrent leurs ateliers, de 4 à 97 ans.</span></a><a class="scrap" href="livredor.html"><span class="win" data-pax="ghost" aria-hidden="true"></span><strong>Livre d’or</strong><span>Les mots laissés en gare.</span></a><a class="scrap" href="boutique.html"><span class="win" data-pax="melon" aria-hidden="true"></span><strong>Boutique</strong><span>Acheter l’art des artistes, en local.</span></a><a class="scrap" href="liens.html"><span class="win" data-pax="fish" aria-hidden="true"></span><strong>Liens</strong><span>Les sites des artistes et les partenaires.</span></a></div>
 </section>
 </main>
 <footer class="foot">
@@ -113,13 +112,13 @@
       </div>
       <div>
         <h2>Suivre la ligne</h2>
-        <p>Instagram et Facebook (<em>untrainpeutencacherunautre</em>) : liens à brancher sur la version finale.</p>
+        <p><a href="http://www.facebook.com/Untrain46250" target="_blank" rel="noopener">Facebook : untrainpeutencacherunautre</a><br><a href="https://www.instagram.com/p/CZyYAz2MYJ1/" target="_blank" rel="noopener">Instagram</a></p>
       </div>
     </div>
     <div class="legal">
       <p>N° Siret : 51897079300015 · Récépissé : W461001484. Alexandra du Moulin, présidente de l’association, assume la responsabilité de directrice de publication.</p>
       <p>Les textes ainsi que les images d’œuvres ou d’expositions rassemblés dans ce site ont été offerts par les artistes et autres adhérents dans le seul but d’informer gracieusement sur leurs activités.</p>
-      <p>Site créé par Sébastien Créteur, repris par Alain Bouville. Hébergé par LWS. Maquette de refonte 2026 : les contenus sont ceux du site actuel, les illustrations sont dessinées pour l’occasion.</p>
+      <p>Site créé par Sébastien Crêteur, repris par Alain Bouville. Hébergé par LWS. Maquette de refonte 2026 : les contenus et les affiches viennent du site actuel, les trains et leurs passagers sont dessinés pour l’occasion.</p>
     </div>
   </div>
 </footer>

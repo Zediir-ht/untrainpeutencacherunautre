@@ -16,7 +16,9 @@
   --f-body: "Bricolage Grotesque", system-ui, sans-serif;
   --f-stamp: "Special Elite", "Courier New", monospace;
 
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-io: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-stamp: cubic-bezier(0.34, 1.56, 0.64, 1);
   --gut: clamp(16px, 4vw, 48px);
   --shadow: drop-shadow(0 7px 7px rgb(12 6 70 / 0.3));
 
@@ -116,7 +118,7 @@ section { padding-block: clamp(3.5rem, 8vw, 7rem); }
   background: var(--c); color: var(--ink);
   border: 3px solid var(--ink); border-radius: 12px 12px 5px 5px;
   font: 400 1.1rem/1 var(--f-display); text-decoration: none;
-  transition: transform 0.5s var(--ease-out);
+  transition: transform 0.22s var(--ease-out);
 }
 .nav-train li:nth-child(2) a { --c: var(--mustard); }
 .nav-train li:nth-child(3) a { --c: var(--mint); }
@@ -126,8 +128,8 @@ section { padding-block: clamp(3.5rem, 8vw, 7rem); }
   background: radial-gradient(circle, #fff 0 22%, var(--ink) 24%); border: 3px solid var(--ink);
 }
 .nav-train a::before { left: 14%; } .nav-train a::after { right: 14%; }
-.nav-train a:hover { transform: translateY(-4px) rotate(-2deg); }
-.nav-train a:hover::before, .nav-train a:hover::after { animation: spin 0.5s linear 2; }
+@media (hover: hover) and (pointer: fine) { .nav-train a:hover { transform: translateY(-4px) rotate(-2deg); } }
+@media (hover: hover) and (pointer: fine) { .nav-train a:hover::before, .nav-train a:hover::after { animation: spin 0.5s linear 2; } }
 .nav-train a[aria-current="page"] { background: var(--ink); color: var(--c); }
 .nav-train a[aria-current="page"]::before, .nav-train a[aria-current="page"]::after { background: radial-gradient(circle, var(--c) 0 22%, var(--ink) 24%); border-color: var(--c); }
 .nav-train a[aria-current="page"] { outline: 3px solid var(--ink); outline-offset: 2px; }
@@ -150,14 +152,14 @@ section { padding-block: clamp(3.5rem, 8vw, 7rem); }
   padding: 0.7rem 1.8rem; background: var(--mustard); color: var(--ink); text-decoration: none;
   -webkit-mask: radial-gradient(circle 11px at 0 50%, #0000 96%, #000) left / 51% 100% no-repeat, radial-gradient(circle 11px at 100% 50%, #0000 96%, #000) right / 51% 100% no-repeat;
   mask: radial-gradient(circle 11px at 0 50%, #0000 96%, #000) left / 51% 100% no-repeat, radial-gradient(circle 11px at 100% 50%, #0000 96%, #000) right / 51% 100% no-repeat;
-  transition: transform 0.45s var(--ease-out);
+  transition: transform 0.2s var(--ease-out);
 }
 .ticket small { font: 400 0.8rem/1.1 var(--f-stamp); letter-spacing: 0.04em; text-transform: uppercase; }
 .ticket strong { font: 400 1.5rem/1 var(--f-display); }
 .ticket--hot { background: var(--tomato); }
 .ticket--ink { background: var(--ink); color: #fff; }
-.ticket:hover { transform: translateY(-4px) rotate(-1.5deg); }
-.ticket:active { transform: translateY(1px) scale(0.98); transition-duration: 0.1s; }
+@media (hover: hover) and (pointer: fine) { .ticket:hover { transform: translateY(-4px) rotate(-1.5deg); } }
+.ticket:active { transform: scale(0.97); transition-duration: 0.1s; }
 .ticket[aria-disabled="true"] { background: repeating-linear-gradient(135deg, var(--bone) 0 10px, #e9dcc0 10px 20px); cursor: not-allowed; opacity: 0.85; }
 
 /* ============ Hero ============ */
@@ -176,8 +178,8 @@ section { padding-block: clamp(3.5rem, 8vw, 7rem); }
 .track { position: absolute; display: flex; align-items: flex-end; gap: 12px; }
 .track--front { bottom: 14px; right: 4vw; z-index: 2; }
 .track--back { bottom: 88px; right: calc(4vw + 330px); z-index: 1; }
-.track--front { animation: arrive 2s var(--ease-out) backwards 0.25s; transition: transform 1.3s var(--ease-out); }
-.track--back { transition: transform 1.3s var(--ease-out) 0.15s; }
+.track--front { animation: arrive 2s var(--ease-out) backwards 0.25s; transition: transform 1.2s var(--ease-io); }
+.track--back { transition: transform 1.2s var(--ease-io) 0.12s; }
 .rails[data-lifted="true"] .track--front { transform: translateX(calc(100% + 8vw)); }
 .rails[data-lifted="true"] .track--back { transform: translateX(22vw) translateY(24px) scale(1.04); transform-origin: bottom right; }
 @keyframes arrive { from { transform: translateX(-105vw); } }
@@ -186,10 +188,10 @@ section { padding-block: clamp(3.5rem, 8vw, 7rem); }
   position: absolute; left: 0; top: -0.4rem; z-index: 5; cursor: pointer;
   border: 0; font: 400 1.25rem/1.05 var(--f-display); color: var(--ink);
   padding: 1rem 1.5rem; --c: var(--pink); --r: 2deg; background: none; filter: var(--shadow);
-  transition: transform 0.45s var(--ease-out);
+  transition: transform 0.2s var(--ease-out);
 }
 .lift::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--pink); clip-path: var(--torn, none); }
-.lift:hover { transform: rotate(-2deg) translateY(-3px); }
+@media (hover: hover) and (pointer: fine) { .lift:hover { transform: rotate(-2deg) translateY(-3px); } }
 .lift:active { transform: scale(0.97); transition-duration: 0.1s; }
 .lift small { display: block; font: 400 0.8rem/1.2 var(--f-stamp); margin-top: 0.3rem; }
 
@@ -209,7 +211,8 @@ section { padding-block: clamp(3.5rem, 8vw, 7rem); }
 .wagon::after { content: ""; position: absolute; right: -14px; top: 62px; width: 14px; height: 6px; background: var(--ink); }
 .wheel { position: absolute; bottom: 0; width: 38px; height: 38px; border-radius: 50%; border: 4px solid var(--ink); background: radial-gradient(circle, var(--ink) 0 16%, transparent 18%), conic-gradient(var(--bone) 0 12%, var(--ink) 0 24%, var(--bone) 0 37%, var(--ink) 0 50%, var(--bone) 0 62%, var(--ink) 0 75%, var(--bone) 0 87%, var(--ink) 0); }
 .wheel:nth-of-type(1) { left: 24px; } .wheel:nth-of-type(2) { right: 24px; }
-.rolling .wheel, .rolling .loco .spin { animation: spin 0.45s linear infinite; }
+.wheel, .loco .spin { animation: spin 0.45s linear infinite paused; }
+.rolling .wheel, .rolling .loco .spin { animation-play-state: running; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 .loco { position: relative; width: 300px; height: 176px; flex: none; margin-left: 2px; }
@@ -247,14 +250,14 @@ section { padding-block: clamp(3.5rem, 8vw, 7rem); }
   -webkit-mask-composite: source-in;
   mask: radial-gradient(circle 11px at var(--stub) 0, #0000 96%, #000), radial-gradient(circle 11px at var(--stub) 100%, #0000 96%, #000);
   mask-composite: intersect;
-  transition: transform 0.5s var(--ease-out);
+  transition: transform 0.22s var(--ease-out);
 }
 .stub:nth-child(1) { --c: var(--mustard); transform: rotate(-1.4deg); }
 .stub:nth-child(2) { --c: var(--mint); transform: rotate(1deg) translateY(10px); }
 .stub:nth-child(3) { --c: var(--pink); transform: rotate(-0.6deg); }
 .stub:nth-child(4) { --c: var(--lilac); transform: rotate(1.6deg) translateY(8px); }
 .stub:nth-child(5) { --c: var(--bone); transform: rotate(-1deg); flex-basis: 440px; max-width: 560px; }
-.stub:hover { transform: translateY(-6px) rotate(0deg); }
+@media (hover: hover) and (pointer: fine) { .stub:hover { transform: translateY(-6px) rotate(0deg); } }
 .stub__y { display: grid; place-items: center; writing-mode: vertical-rl; transform: rotate(180deg); font: 400 2.4rem/1 var(--f-display); border-right: 3px dashed var(--ink); padding: 0.5rem; }
 .stub__t { padding: 1.2rem 1.4rem 1.2rem 1.3rem; }
 .stub__t small { font: 400 0.82rem/1.3 var(--f-stamp); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 0.3rem; }
@@ -345,7 +348,7 @@ section { padding-block: clamp(3.5rem, 8vw, 7rem); }
 .pick span { display: block; padding: 0.6rem 1rem; border: 3px solid var(--ink); border-radius: 999px; font-weight: 700; cursor: pointer; background: #fff; transition: transform 0.35s var(--ease-out), background 0.2s; }
 .pick input:checked + span { background: var(--ink); color: var(--mustard); transform: rotate(-2deg); }
 .pick input:focus-visible + span { outline: 3px solid var(--ink); outline-offset: 3px; box-shadow: 0 0 0 6px var(--focus-ring); }
-.pick span:hover { transform: translateY(-2px); }
+@media (hover: hover) and (pointer: fine) { .pick span:hover { transform: translateY(-2px); } }
 .sent { display: none; font: 400 1.05rem/1.4 var(--f-stamp); background: var(--mint); border: 3px solid var(--ink); padding: 1rem; border-radius: 8px; margin-top: 1rem; }
 .sent[data-show="true"] { display: block; }
 .submit { border: 0; cursor: pointer; font: inherit; }
@@ -431,11 +434,11 @@ body[data-page="photos"] .nav-train li:not(:last-child)::after, body[data-page="
 
 /* ============ Dépôt : tous les wagons (accueil) ============ */
 .depot { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.6rem 1.3rem; margin-top: 2rem; }
-.depot a { text-decoration: none; display: grid; grid-template-columns: 64px 1fr; gap: 0.3rem 0.9rem; align-items: center; transition: transform 0.45s var(--ease-out); }
+.depot a { text-decoration: none; display: grid; grid-template-columns: 64px 1fr; gap: 0.3rem 0.9rem; align-items: center; transition: transform 0.22s var(--ease-out); }
 .depot a:nth-child(odd) { --r: -1.2deg; } .depot a:nth-child(even) { --r: 1.3deg; }
 .depot a:nth-child(7n+1) { --c: var(--tomato); } .depot a:nth-child(7n+2) { --c: var(--mustard); } .depot a:nth-child(7n+3) { --c: var(--mint); }
 .depot a:nth-child(7n+4) { --c: var(--pink); } .depot a:nth-child(7n+5) { --c: var(--lilac); } .depot a:nth-child(7n+6) { --c: var(--bone); } .depot a:nth-child(7n) { --c: var(--sky); }
-.depot a:hover { transform: rotate(0deg) translateY(-5px); }
+@media (hover: hover) and (pointer: fine) { .depot a:hover { transform: rotate(0deg) translateY(-5px); } }
 .depot .win { grid-row: span 2; width: 64px; height: 56px; background: var(--sky); border: 3px solid var(--ink); border-radius: 10px; overflow: hidden; }
 .depot .win svg { width: 100%; height: 100%; }
 .depot strong { font: 400 1.3rem/1 var(--f-display); }
@@ -476,8 +479,8 @@ body[data-page="photos"] .nav-train li:not(:last-child)::after, body[data-page="
 .pax-card .win svg { width: 100%; height: 100%; }
 .pax-card strong { font-weight: 750; font-size: 1.02rem; line-height: 1.2; display: block; }
 .pax-card small { font: 400 0.75rem/1.2 var(--f-stamp); }
-a.pax-card { transition: transform 0.4s var(--ease-out); }
-a.pax-card:hover { transform: translateY(-4px) rotate(0deg); }
+a.pax-card { transition: transform 0.22s var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { a.pax-card:hover { transform: translateY(-4px) rotate(0deg); } }
 .pax-card.no-page { filter: grayscale(0.85) var(--shadow); }
 .register { columns: 15rem; column-gap: 2.4rem; list-style: none; margin: 1.8rem 0 0; padding: 0; font: 400 1rem/1.35 var(--f-stamp); }
 .register li { break-inside: avoid; padding: 0.3rem 0; border-bottom: 2px dotted rgb(255 255 255 / 0.25); }
@@ -574,7 +577,7 @@ h2:not(.sub)::after {
 .passage { position: fixed; inset: 0; z-index: 95; pointer-events: none; background: var(--ink); display: grid; place-items: center; transform: translateX(-101%); overflow: hidden; }
 .passage::after { content: ""; position: absolute; left: 0; right: 0; top: calc(50% + 78px); height: 12px; border-top: 4px solid #fff; background: repeating-linear-gradient(90deg, #fff 0 8px, transparent 8px 40px); opacity: 0.5; }
 .passage .track { position: relative; transform: scale(0.85); }
-.passage.is-in { animation: passIn 0.42s cubic-bezier(0.7, 0, 0.84, 0) forwards; }
+.passage.is-in { animation: passIn 0.4s var(--ease-io) forwards; }
 .passage.is-out { animation: passOut 0.7s var(--ease-out) forwards; }
 @keyframes passIn { from { transform: translateX(-101%); } to { transform: none; } }
 @keyframes passOut { from { transform: none; } to { transform: translateX(101%); } }
@@ -654,10 +657,50 @@ html.arriving body::after { content: ""; position: fixed; inset: 0; z-index: 94;
 .passage .loco .puff { display: none; }
 /* la voie du train caché, et ses plaques qui se tamponnent à la révélation */
 .rails::before { content: ""; position: absolute; left: 0; right: 0; bottom: 82px; height: 9px; border-top: 4px solid var(--ink); background: repeating-linear-gradient(90deg, var(--ink) 0 8px, transparent 8px 40px); }
-.track--back .wagon__plate { transition: opacity 0.2s, transform 0.45s var(--ease-out); }
+.track--back .wagon__plate { transition: opacity 0.12s ease-out, transform 0.12s ease-out; }
+.rails[data-lifted="true"] .track--back .wagon__plate { transition: opacity 0.1s ease-out, transform 0.34s var(--ease-stamp); }
 .rails:not([data-lifted="true"]) .track--back .wagon__plate { opacity: 0; transform: translateX(-50%) scale(1.7) rotate(-8deg); }
 .rails[data-lifted="true"] .track--back .wagon:nth-child(1) .wagon__plate { transition-delay: 0.55s; }
 .rails[data-lifted="true"] .track--back .wagon:nth-child(2) .wagon__plate { transition-delay: 0.68s; }
 .rails[data-lifted="true"] .track--back .wagon:nth-child(3) .wagon__plate { transition-delay: 0.81s; }
 .rails[data-lifted="true"] .track--back .wagon:nth-child(4) .wagon__plate { transition-delay: 0.94s; }
 .rails[data-lifted="true"] .track--back { transform: translateX(22vw) translateY(6px); }
+
+/* ============ Mouvement, passe Emil Kowalski ============ */
+/* retour tactile au clic sur tout ce qui se presse */
+.nav-train a:active, .depot a:active, a.pax-card:active, .stub:active, .pick span:active, .menu-toggle:active { scale: 0.97; transition: scale 0.1s ease-out; }
+.nav-train a, .depot a, a.pax-card, .stub, .pick span, .menu-toggle { transition-property: transform, scale; }
+
+/* les mots-rançon se collent un par un au chargement (toujours visibles, seul le geste bouge) */
+.ransom .scrap { animation: paste 0.42s var(--ease-out) backwards; }
+.ransom .scrap:nth-child(1) { animation-delay: 0.05s; } .ransom .scrap:nth-child(2) { animation-delay: 0.11s; }
+.ransom .scrap:nth-child(3) { animation-delay: 0.17s; } .ransom .scrap:nth-child(4) { animation-delay: 0.23s; }
+.ransom .scrap:nth-child(5) { animation-delay: 0.29s; } .ransom .scrap:nth-child(6) { animation-delay: 0.35s; }
+.ransom .scrap:nth-child(7) { animation-delay: 0.41s; }
+@keyframes paste { from { translate: 0 -14px; scale: 1.06; rotate: 4deg; } }
+
+/* les papiers se plaquent au mur en entrant dans l'écran (scroll, hors fil principal) */
+@supports (animation-timeline: view()) {
+  .collage > .scrap, .board > .scrap, .ways > .scrap, .news > .scrap, .shop > .scrap, .contact-grid > .scrap, .stop > .scrap, .frame, .notes > .scrap, .depot > a {
+    animation: plaque linear both; animation-timeline: view(); animation-range: entry 0% entry 55%;
+  }
+}
+@keyframes plaque { from { translate: 0 22px; rotate: 2.5deg; } }
+
+/* menu mobile : il descend du quai au lieu d'apparaître d'un coup */
+.js .nav-wrap[data-open="true"] { transition: opacity 0.2s ease-out, translate 0.2s var(--ease-out); }
+@starting-style { .js .nav-wrap[data-open="true"] { opacity: 0; translate: 0 -8px; } }
+
+/* guichet : le champ refuse en secouant la tête, le billet composté arrive */
+.field input.shake { animation: shake 0.26s ease-out; }
+@keyframes shake { 20% { translate: -5px 0; } 45% { translate: 4px 0; } 70% { translate: -2px 0; } }
+.sent[data-show="true"] { transition: opacity 0.22s ease-out, translate 0.22s var(--ease-out), rotate 0.3s var(--ease-stamp); rotate: -1deg; }
+@starting-style { .sent[data-show="true"] { opacity: 0; translate: 0 6px; rotate: 3deg; } }
+
+/* les yeux clignent */
+.eyes { transform-box: fill-box; transform-origin: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ransom .scrap, .collage > .scrap, .board > .scrap, .ways > .scrap, .news > .scrap, .shop > .scrap, .contact-grid > .scrap, .stop > .scrap, .frame, .notes > .scrap, .depot > a { animation: none !important; }
+  .field input.shake { animation: none; }
+}

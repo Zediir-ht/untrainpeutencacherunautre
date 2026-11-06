@@ -102,30 +102,60 @@
   document.querySelectorAll(".scrap, .lift").forEach((el, i) => el.style.setProperty("--torn", tornPolygon(i * 977 + 13, el.classList.contains("scrap--tight") ? 3 : 6)));
   document.querySelectorAll(".torn-top").forEach((el, i) => el.style.setProperty("--torn-strip", tornStrip(i * 31 + 7)));
 
-  /* ---------- yeux googly ---------- */
-  const eyes = [...document.querySelectorAll(".eyes")];
-  let mx = innerWidth * 0.5, my = innerHeight * 0.4, ticking = false;
-  function look() {
-    ticking = false;
-    eyes.forEach((g) => {
-      g.querySelectorAll(".eye").forEach((e, k) => {
-        const p = g.querySelectorAll(".pupil")[k], b = e.getBoundingClientRect();
-        const cx = b.left + b.width / 2, cy = b.top + b.height / 2;
-        const a = Math.atan2(my - cy, mx - cx), d = Math.min(1, Math.hypot(mx - cx, my - cy) / 220) * 8;
-        p.setAttribute("cx", 210 + (k ? 47 : 0) + Math.cos(a) * d);
-        p.setAttribute("cy", 90 + Math.sin(a) * d);
-      });
+  /* ---------- yeux : les pupilles suivent la souris avec un ressort, et clignent ---------- */
+  const eyeGroups = [...document.querySelectorAll(".eyes")];
+  const pupils = eyeGroups.flatMap((g) => [...g.querySelectorAll(".pupil")].map((p, k) => ({ p, eye: g.querySelectorAll(".eye")[k], bx: k ? 257 : 210, x: 0, y: 0, tx: 0, ty: 0 })));
+  let springing = false;
+  function aim(mx, my) {
+    pupils.forEach((o) => {
+      const b = o.eye.getBoundingClientRect(), cx = b.left + b.width / 2, cy = b.top + b.height / 2;
+      const ang = Math.atan2(my - cy, mx - cx), d = Math.min(1, Math.hypot(mx - cx, my - cy) / 220) * 8;
+      o.tx = Math.cos(ang) * d; o.ty = Math.sin(ang) * d;
     });
+    if (!springing) { springing = true; requestAnimationFrame(spring); }
   }
-  if (!reduce && eyes.length) {
-    addEventListener("pointermove", (ev) => { mx = ev.clientX; my = ev.clientY; if (!ticking) { ticking = true; requestAnimationFrame(look); } }, { passive: true });
+  function spring() {
+    let moving = false;
+    pupils.forEach((o) => {
+      o.x += (o.tx - o.x) * 0.16; o.y += (o.ty - o.y) * 0.16;
+      if (Math.abs(o.tx - o.x) > 0.05 || Math.abs(o.ty - o.y) > 0.05) moving = true;
+      o.p.setAttribute("cx", (o.bx + o.x).toFixed(2)); o.p.setAttribute("cy", (90 + o.y).toFixed(2));
+    });
+    springing = moving;
+    if (moving) requestAnimationFrame(spring);
+  }
+  if (!reduce && pupils.length) {
+    addEventListener("pointermove", (ev) => aim(ev.clientX, ev.clientY), { passive: true });
+    const blink = (g) => {
+      setTimeout(() => {
+        if (!document.hidden && g.isConnected) g.animate([{ transform: "scaleY(1)" }, { transform: "scaleY(0.08)", offset: 0.45 }, { transform: "scaleY(1)" }], { duration: 170, easing: "ease-out" });
+        blink(g);
+      }, 2600 + Math.random() * 4200);
+    };
+    eyeGroups.forEach(blink);
   }
 
   /* ---------- soulever le train ---------- */
   const rails = document.querySelector(".rails"), lift = document.querySelector(".lift");
   if (rails) {
-    const roll = (ms) => { rails.classList.add("rolling"); clearTimeout(roll.t); roll.t = setTimeout(() => rails.classList.remove("rolling"), ms); };
-    if (!reduce) roll(2000);
+    /* les roues tournent pendant le trajet puis freinent (au lieu de s'arrêter net) */
+    const wheels = () => [...rails.querySelectorAll(".wheel, .loco .spin")].flatMap((w) => w.getAnimations());
+    const roll = (ms, brakeMs = 500) => {
+      cancelAnimationFrame(roll.raf); clearTimeout(roll.t);
+      wheels().forEach((an) => { an.playbackRate = 1; });
+      rails.classList.add("rolling");
+      roll.t = setTimeout(() => {
+        const t0 = performance.now();
+        const step = (t) => {
+          const k = 1 - (t - t0) / brakeMs;
+          if (k <= 0) { rails.classList.remove("rolling"); wheels().forEach((an) => { an.playbackRate = 1; }); return; }
+          wheels().forEach((an) => { an.playbackRate = k * k; });
+          roll.raf = requestAnimationFrame(step);
+        };
+        roll.raf = requestAnimationFrame(step);
+      }, Math.max(0, ms - brakeMs));
+    };
+    if (!reduce) roll(2100, 1300);
     if (lift) {
       const label = lift.querySelector("[data-label]"), hint = lift.querySelector("[data-hint]");
       lift.addEventListener("click", () => {
@@ -134,7 +164,7 @@
         lift.setAttribute("aria-pressed", String(on));
         label.textContent = on ? "Remettre le train" : "Soulever le train";
         hint.textContent = on ? "Il en cachait bien un autre, non ?" : "Allez, regardez dessous.";
-        if (!reduce) roll(1300);
+        if (!reduce) roll(1350, 450);
       });
     }
   }
@@ -199,7 +229,7 @@
         const bad = !inp.value.trim() || (inp.type === "email" && !/^\S+@\S+\.\S+$/.test(inp.value));
         inp.setAttribute("aria-invalid", String(bad));
         err.textContent = bad ? (inp.type === "email" ? "Cette adresse ne ressemble à aucun quai connu." : "Un billet sans nom ne passe pas le portillon.") : "";
-        if (bad) ok = false;
+        if (bad) { ok = false; inp.classList.remove("shake"); void inp.offsetWidth; inp.classList.add("shake"); }
       });
       const sent = form.querySelector(".sent");
       sent.dataset.show = String(ok);

@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-06T15:52:14.362268Z",
+  "title": "Design System: Un train peut en cacher un autre",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Encre Bleu-Nuit",
+        "canonical": "#15103c",
+        "tonalRamp": [
+          "#05040f",
+          "#09071b",
+          "#0e0a27",
+          "#120e33",
+          "#504c6d",
+          "#8a889e",
+          "#b9b7c4",
+          "#e3e2e8"
+        ]
+      },
+      "outremer": {
+        "role": "primary",
+        "displayName": "Bleu Outremer",
+        "canonical": "#2338ff",
+        "tonalRamp": [
+          "#090e40",
+          "#101973",
+          "#1724a6",
+          "#1e30d9",
+          "#5a6aff",
+          "#919cff",
+          "#bdc3ff",
+          "#e5e7ff"
+        ]
+      },
+      "tomate": {
+        "role": "primary",
+        "displayName": "Rouge Tomate",
+        "canonical": "#ff4b2b",
+        "tonalRamp": [
+          "#40130b",
+          "#732213",
+          "#a6311c",
+          "#d94025",
+          "#ff7860",
+          "#ffa595",
+          "#ffc9bf",
+          "#ffe9e6"
+        ]
+      },
+      "moutarde": {
+        "role": "secondary",
+        "displayName": "Jaune Moutarde",
+        "canonical": "#ffc61a",
+        "tonalRamp": [
+          "#403206",
+          "#73590c",
+          "#a68111",
+          "#d9a816",
+          "#ffd453",
+          "#ffe28c",
+          "#ffeeba",
+          "#fff8e4"
+        ]
+      },
+      "menthe": {
+        "role": "secondary",
+        "displayName": "Vert Menthe",
+        "canonical": "#6fe3b0",
+        "tonalRamp": [
+          "#1c392c",
+          "#32664f",
+          "#489472",
+          "#5ec196",
+          "#93eac4",
+          "#b7f1d8",
+          "#d4f7e7",
+          "#eefcf6"
+        ]
+      },
+      "rose-guimauve": {
+        "role": "tertiary",
+        "displayName": "Rose Guimauve",
+        "canonical": "#ff9bd0",
+        "tonalRamp": [
+          "#402734",
+          "#73465e",
+          "#a66587",
+          "#d984b1",
+          "#ffb4dc",
+          "#ffcde8",
+          "#ffe1f1",
+          "#fff3f9"
+        ]
+      },
+      "lilas": {
+        "role": "tertiary",
+        "displayName": "Lilas",
+        "canonical": "#b9a6ff",
+        "tonalRamp": [
+          "#2e2a40",
+          "#534b73",
+          "#786ca6",
+          "#9d8dd9",
+          "#cabcff",
+          "#dcd2ff",
+          "#eae4ff",
+          "#f7f4ff"
+        ]
+      },
+      "papier-os": {
+        "role": "neutral",
+        "displayName": "Papier Os",
+        "canonical": "#fff6e2",
+        "tonalRamp": [
+          "#403e38",
+          "#736f66",
+          "#a6a093",
+          "#d9d1c0",
+          "#fff8e9",
+          "#fffaf0",
+          "#fffcf6",
+          "#fffefc"
+        ]
+      },
+      "ciel-vitre": {
+        "role": "tertiary",
+        "displayName": "Ciel de Vitre",
+        "canonical": "#bfe6ff",
+        "tonalRamp": [
+          "#303a40",
+          "#566773",
+          "#7c96a6",
+          "#a2c4d9",
+          "#cfecff",
+          "#dff2ff",
+          "#ecf8ff",
+          "#f7fcff"
+        ]
+      },
+      "rouge-tampon": {
+        "role": "neutral",
+        "displayName": "Rouge Tampon",
+        "canonical": "#b81d08",
+        "tonalRamp": [
+          "#2e0702",
+          "#530d04",
+          "#781305",
+          "#9c1907",
+          "#ca5646",
+          "#dc8e84",
+          "#eabbb5",
+          "#f6e4e1"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (mots-rançon)",
+        "purpose": "Titres de page, toujours en mots séparés sur papiers."
+      },
+      "headline": {
+        "displayName": "Titre de section",
+        "purpose": "Titres de section avec bout de voie dessous."
+      },
+      "title": {
+        "displayName": "Titre de papier",
+        "purpose": "Titres dans les papiers, wagons du menu."
+      },
+      "body": {
+        "displayName": "Texte courant",
+        "purpose": "Lecture, 62ch max."
+      },
+      "label": {
+        "displayName": "Machine à écrire",
+        "purpose": "Billets, dates, lieux, tampons, étiquettes."
+      }
+    },
+    "shadows": [
+      {
+        "name": "papier-pose",
+        "value": "drop-shadow(0 7px 7px rgb(12 6 70 / 0.3))",
+        "purpose": "Tous les papiers déchirés et billets (en filter)."
+      },
+      {
+        "name": "objet-suspendu",
+        "value": "0 12px 18px rgb(12 6 70 / 0.3)",
+        "purpose": "Hublot, affiches."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Entrées, survols, arrivée du train."
+      },
+      {
+        "name": "ease-io",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Mouvements à l'écran : départ du train, passage entre pages."
+      },
+      {
+        "name": "ease-stamp",
+        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "purpose": "Tampons et plaques qui se posent avec un rebond."
+      },
+      {
+        "name": "duree-survol",
+        "value": "200ms",
+        "purpose": "Survols et transitions d'interface."
+      },
+      {
+        "name": "duree-clic",
+        "value": "100ms",
+        "purpose": "Retour au clic, scale 0.97."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "collage-une-colonne",
+        "value": "900px"
+      },
+      {
+        "name": "sans-hublot",
+        "value": "700px"
+      },
+      {
+        "name": "compact",
+        "value": "560px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Billet primaire",
+      "kind": "button",
+      "refersTo": "billet-primaire",
+      "description": "Action principale : un billet de train à encoches.",
+      "html": "<a class=\"ds-billet\" href=\"#\"><small>Billet aller · coopérer</small><strong>Monter à bord</strong></a>",
+      "css": ".ds-billet{display:inline-flex;flex-direction:column;justify-content:center;gap:.15rem;min-height:4.4rem;padding:.7rem 1.8rem;background:#ff4b2b;color:#15103c;text-decoration:none;-webkit-mask:radial-gradient(circle 11px at 0 50%,#0000 96%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 50%,#0000 96%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 11px at 0 50%,#0000 96%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 50%,#0000 96%,#000) right/51% 100% no-repeat;filter:drop-shadow(0 7px 7px rgb(12 6 70/.3));transition:transform .2s cubic-bezier(.23,1,.32,1)}.ds-billet small{font:400 .8rem/1.1 'Special Elite',monospace;letter-spacing:.04em;text-transform:uppercase}.ds-billet strong{font:400 1.5rem/1 'Bagel Fat One',sans-serif}.ds-billet:hover{transform:translateY(-4px) rotate(-1.5deg)}.ds-billet:active{transform:scale(.97);transition-duration:.1s}.ds-billet:focus-visible{outline:3px solid #15103c;outline-offset:3px;box-shadow:0 0 0 6px #ffc61a}"
+    },
+    {
+      "name": "Billet secondaire",
+      "kind": "button",
+      "refersTo": "billet-secondaire",
+      "description": "Action secondaire en moutarde.",
+      "html": "<a class=\"ds-billet2\" href=\"#\"><small>Voir la ligne</small><strong>Les expos depuis 2009</strong></a>",
+      "css": ".ds-billet2{display:inline-flex;flex-direction:column;gap:.15rem;padding:.7rem 1.8rem;min-height:4.4rem;justify-content:center;background:#ffc61a;color:#15103c;text-decoration:none;-webkit-mask:radial-gradient(circle 11px at 0 50%,#0000 96%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 50%,#0000 96%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 11px at 0 50%,#0000 96%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 50%,#0000 96%,#000) right/51% 100% no-repeat;transition:transform .2s cubic-bezier(.23,1,.32,1)}.ds-billet2 small{font:400 .8rem/1.1 'Special Elite',monospace;text-transform:uppercase;letter-spacing:.04em}.ds-billet2 strong{font:400 1.5rem/1 'Bagel Fat One',sans-serif}.ds-billet2:hover{transform:translateY(-4px) rotate(-1.5deg)}.ds-billet2:active{transform:scale(.97)}"
+    },
+    {
+      "name": "Train de navigation",
+      "kind": "nav",
+      "refersTo": "wagon-nav",
+      "description": "Les liens principaux sont des wagons attelés.",
+      "html": "<ul class=\"ds-nav\"><li><a href=\"#\" aria-current=\"page\">Accueil</a></li><li><a href=\"#\">Actualité</a></li><li><a href=\"#\">Les artistes</a></li></ul>",
+      "css": ".ds-nav{display:flex;gap:14px;list-style:none;margin:0;padding:0 0 14px}.ds-nav li{position:relative}.ds-nav li:not(:last-child)::after{content:'';position:absolute;right:-14px;top:50%;width:14px;height:5px;background:#15103c}.ds-nav a{position:relative;display:block;padding:.55rem 1.1rem .5rem;background:#ff4b2b;color:#15103c;border:3px solid #15103c;border-radius:12px 12px 5px 5px;font:400 1.1rem/1 'Bagel Fat One',sans-serif;text-decoration:none;transition:transform .22s cubic-bezier(.23,1,.32,1)}.ds-nav li:nth-child(2) a{background:#ffc61a}.ds-nav li:nth-child(3) a{background:#6fe3b0}.ds-nav a::before,.ds-nav a::after{content:'';position:absolute;bottom:-13px;width:17px;height:17px;border-radius:50%;background:radial-gradient(circle,#fff 0 22%,#15103c 24%);border:3px solid #15103c}.ds-nav a::before{left:14%}.ds-nav a::after{right:14%}.ds-nav a:hover{transform:translateY(-4px) rotate(-2deg)}.ds-nav a[aria-current=page]{background:#15103c;color:#ff4b2b}"
+    },
+    {
+      "name": "Papier déchiré",
+      "kind": "card",
+      "refersTo": "papier",
+      "description": "Conteneur de contenu : papier aux bords déchirés, tourné, ombre douce.",
+      "html": "<div class=\"ds-papier\"><h3>Maison d’artistes</h3><p>Une maison de bastide investie des placards aux combles.</p></div>",
+      "css": ".ds-papier{position:relative;isolation:isolate;max-width:22rem;padding:1.5rem 1.7rem;color:#15103c;transform:rotate(-1.2deg);filter:drop-shadow(0 7px 7px rgb(12 6 70/.3));font:450 1rem/1.5 'Bricolage Grotesque',sans-serif}.ds-papier::before{content:'';position:absolute;inset:0;z-index:-1;background:#ffc61a;clip-path:polygon(0 3px,12% 0,25% 4px,40% 1px,55% 5px,70% 0,85% 3px,100% 1px,calc(100% - 3px) 50%,100% calc(100% - 2px),80% calc(100% - 5px),60% 100%,40% calc(100% - 4px),20% calc(100% - 1px),0 100%,4px 50%)}.ds-papier h3{font:400 1.5rem/1 'Bagel Fat One',sans-serif;margin:0 0 .5rem}.ds-papier p{margin:0}"
+    },
+    {
+      "name": "Champ du guichet",
+      "kind": "input",
+      "refersTo": "champ",
+      "description": "Champ de formulaire à contour encre.",
+      "html": "<label class=\"ds-field\"><span>Adresse e-mail</span><input type=\"email\" placeholder=\"vous@exemple.fr\"></label>",
+      "css": ".ds-field{display:grid;gap:.35rem;max-width:20rem}.ds-field span{font:400 .95rem/1.2 'Special Elite',monospace;text-transform:uppercase;letter-spacing:.03em;color:#15103c}.ds-field input{font:500 1.05rem/1.2 'Bricolage Grotesque',sans-serif;color:#15103c;padding:.8rem .9rem;background:#fff;border:3px solid #15103c;border-radius:8px;caret-color:#ff4b2b}.ds-field input::placeholder{color:#5a5480}.ds-field input:focus-visible{outline:3px solid #15103c;outline-offset:3px;box-shadow:0 0 0 6px #ffc61a}"
+    },
+    {
+      "name": "Pastilles de choix",
+      "kind": "chip",
+      "refersTo": "pastille-choix",
+      "description": "Choix exclusif (type d'adhésion).",
+      "html": "<div class=\"ds-picks\"><span class=\"on\">Artiste</span><span>Ami·e des Arts</span><span>Solidaire</span></div>",
+      "css": ".ds-picks{display:flex;gap:.6rem;flex-wrap:wrap}.ds-picks span{padding:.6rem 1rem;border:3px solid #15103c;border-radius:999px;font:700 1rem/1.2 'Bricolage Grotesque',sans-serif;background:#fff;color:#15103c;cursor:pointer;transition:transform .22s cubic-bezier(.23,1,.32,1)}.ds-picks span:hover{transform:translateY(-2px)}.ds-picks span.on{background:#15103c;color:#ffc61a;transform:rotate(-2deg)}"
+    },
+    {
+      "name": "Tampon",
+      "kind": "custom",
+      "refersTo": "plaque-wagon",
+      "description": "Tampon encreur pour un chiffre ou un avertissement.",
+      "html": "<span class=\"ds-tampon\"><b>Jusqu’à 66 %</b>de déduction fiscale sur les dons</span>",
+      "css": ".ds-tampon{display:inline-block;font:400 1.05rem/1.25 'Special Elite',monospace;text-transform:uppercase;color:#b81d08;background:#fff6e2;border:4px double #b81d08;border-radius:10px;padding:.5rem .9rem;transform:rotate(-4deg)}.ds-tampon b{font:400 1.9rem/1 'Bagel Fat One',sans-serif;display:block}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Le Convoi d'Art Actuel",
+    "overview": "Le site est un train de marchandises qui transporte l'art de village en village. Chaque page est un wagon peint d'une livrée différente. Les contenus voyagent dessus comme des papiers déchirés collés à la main, et des wagons farceurs passent, s'arrêtent et cachent ce qu'il y a derrière. Le nom de l'association est le moteur du système : partout, une chose en cache une autre. Le second train est sous le premier, la page suivante arrive derrière un convoi, les plaques n'apparaissent qu'une fois le train soulevé.\n\nLe ressenti est **tactile et farceur**. Tout ressemble à un objet en papier ou en tôle peinte qu'on pourrait attraper : il penche un peu, il a une ombre, il réagit au doigt. L'humour vit dans le décor, les passagers et les titres, jamais dans les faits ni dans les libellés d'action. Densité moyenne, beaucoup d'air entre les morceaux, aucune grille rigide visible.\n\nL'anti-modèle confirmé est **le site culturel institutionnel** : hero photo sage, grille de cartes égales, fond crème et serif élégant. Si une page commence à y ressembler, elle a perdu le convoi.",
+    "keyCharacteristics": [
+      "Une couleur de fond pleine par page (la livrée), jamais un fond neutre.",
+      "Des papiers déchirés aux bords irréguliers, légèrement tournés, avec une ombre douce.",
+      "Des titres en mots-rançon, chaque mot sur son propre papier.",
+      "Des trains dessinés avec des passagers absurdes (œil, moustache, poisson, vache, œuf, fantôme, chapeau melon).",
+      "Des billets de train à encoches comme boutons d'action.",
+      "Un mouvement physique : les trains accélèrent, freinent, les yeux suivent la souris et clignent."
+    ],
+    "rules": [
+      {
+        "name": "The Livrée Rule",
+        "body": "Chaque page possède exactement une couleur de fond pleine, et un papier ne prend jamais la couleur du fond sur lequel il est posé.",
+        "section": "colors"
+      },
+      {
+        "name": "The Encre Unique Rule",
+        "body": "Le texte sur papier est toujours à l'encre bleu-nuit. Le texte sur fond outremer ou encre est blanc. Pas de gris pour le texte secondaire : on teinte depuis l'encre ou on réduit la taille.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tampon Rule",
+        "body": "Le rouge tampon est réservé aux tampons et aux erreurs. La tomate n'est jamais utilisée comme couleur de texte sur papier clair (contraste 3,1:1).",
+        "section": "colors"
+      },
+      {
+        "name": "The Rançon Rule",
+        "body": "Un titre de page se compose de mots séparés, chacun sur un papier de couleur différente, avec une rotation de ±1 à 3°. Un mot sur deux ou trois peut changer de police (Special Elite ou Bricolage 800) pour l'effet découpé.",
+        "section": "typography"
+      },
+      {
+        "name": "The Machine à Écrire Rule",
+        "body": "Special Elite ne sert qu'à ce qui serait imprimé ou tamponné dans le monde réel : billets, dates, lieux, tampons, étiquettes. Jamais pour un paragraphe de plus de deux lignes, sauf une citation.",
+        "section": "typography"
+      },
+      {
+        "name": "The Papier Posé Rule",
+        "body": "Une ombre a toujours un décalage vertical et un flou doux. L'ombre décalée sans flou (néo-brutaliste) n'appartient pas à ce monde.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Pas de Rond Parfait Rule",
+        "body": "Un papier n'est jamais un rectangle net : s'il n'est pas déchiré, c'est qu'il est en tôle (wagon), en carton (billet) ou en émail (plaque).",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** donner à chaque nouvelle page sa propre livrée pleine prise dans la palette, et un passager pour son hublot.",
+      "**Do** poser le contenu sur des papiers déchirés qui varient en couleur, en étendue et en rotation (±2°).",
+      "**Do** écrire les titres de page en mots-rançon et les titres de section avec leur bout de voie.",
+      "**Do** utiliser les billets à encoches pour toute action principale, avec une ligne en machine à écrire qui dit le contexte.",
+      "**Do** garder les durées d'interface sous 250ms (survol 200ms, clic 100ms), et réserver les mouvements longs aux trains et au passage entre pages.",
+      "**Do** réserver les survols aux appareils à souris (`@media (hover: hover) and (pointer: fine)`) et couper les mouvements de position sous `prefers-reduced-motion`.",
+      "**Do** garder l'humour dans le décor, les passagers et les titres, et les faits exacts."
+    ],
+    "donts": [
+      "**Don't** ressembler au site culturel institutionnel : pas de hero photo sage, pas de grille de cartes égales, pas de fond crème avec serif élégant.",
+      "**Don't** poser un papier de la même couleur que la livrée de la page.",
+      "**Don't** utiliser la tomate comme couleur de texte sur papier clair : c'est le rouge tampon qui sert.",
+      "**Don't** utiliser d'ombre décalée sans flou, de verre, de flou décoratif ou de dégradé dans le texte.",
+      "**Don't** utiliser d'emoji ni de caractère Unicode comme icône : les passagers et les objets sont dessinés en SVG avec un trait encre de 3px.",
+      "**Don't** mettre de blague dans un libellé d'action ou un message d'erreur au point d'en cacher le sens.",
+      "**Don't** faire de blague dans les sections de mémoire (artistes disparus) : elles restent sobres, sur fond encre."
+    ]
+  }
+}

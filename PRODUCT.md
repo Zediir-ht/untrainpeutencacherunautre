@@ -22,13 +22,13 @@ Artist-run association founded in 2009 that brings contemporary art to villages 
 Annual membership year runs November to October. Collective exhibitions each year in rural venues. Calls for projects (appel à projet). Tax deductions: up to 66% on donations, leave-day donation (law of 2024), deductions on art purchases. Practical sections of the current site: Accueil, Actualité, Adhésions, Les artistes, Photos/vidéos, Cours et stages, Livre d'or, Contact, Boutique, Historique, Liens.
 
 ## Capabilities and Constraints
-Language: French. Legal footer to preserve: association loi 1901, Siret 51897079300015, Récépissé W461001484, publication director Alexandra du Moulin (présidente), site created by Sébastien Créteur and taken over by Alain Bouville, hosted by LWS. Address: 77 rue du Barry, 46250 Cazals. Tel 09 60 09 28 56 / 07 87 38 37 20. Mails: admin@untrainpeutencacherunautre.com, untrainpeutencacherunautre446@gmail.com, lezateliers@orange.fr. Instagram and Facebook presence.
+Language: French. Legal footer to preserve: association loi 1901, Siret 51897079300015, Récépissé W461001484, publication director Alexandra du Moulin (présidente), site created by Sébastien Crêteur and taken over by Alain Bouville, hosted by LWS. Address: 77 rue du Barry, 46250 Cazals. Tel 09 60 09 28 56 / 07 87 38 37 20. Mails: admin@untrainpeutencacherunautre.com, untrainpeutencacherunautre446@gmail.com, lezateliers@orange.fr. Instagram and Facebook presence.
 
 ## Brand Commitments
 Name "Un train peut en cacher un autre" kept as is. Existing editorial copy (association presentation, exhibition history 2009 to 2025) is reused verbatim or lightly condensed; no invented facts.
 
 ## Evidence on Hand
-Exhibition history 2009 to 2016 (Échappée d'œuvres 2010, Maison d'artistes 2011 with 2000 visitors, Marminiac Gart 2012, Réflexions 2013 at the Église des Cordeliers in Gourdon, Errances 2014-2015 with 25 artists in several Lot venues, four projects in 2016) and yearly recaps 2017 to 2025. Existing image files live on the current site only; none are in this repo, so the mockup uses placeholders and drawn art, not fabricated photos. Absences: no member list, prices, dates for the next event or testimonials were provided; do not invent them.
+Exhibition history 2009 to 2016 (Échappée d'œuvres 2010, Maison d'artistes 2011 with 2000 visitors, Marminiac Gart 2012, Réflexions 2013 at the Église des Cordeliers in Gourdon, Errances 2014-2015 with 25 artists in several Lot venues, four projects in 2016) and yearly recaps 2017 to 2025. A selection of posters and album thumbnails from the current site lives in assets/img/ (2020 to 2026); trains and passengers are drawn. The artist lists (30 members up to date in spring 2026, 128 past members) come from the current site. Absences: membership prices and the 2017-2025 recap visuals are not in the repo; do not invent them.
 
 ## Product Principles
 1. Keep real information findable under the joke: join, give, visit, contact.

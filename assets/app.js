@@ -22,40 +22,57 @@
   const COLORS = { tomato: "#ff4b2b", mustard: "#ffc61a", mint: "#6fe3b0", pink: "#ff9bd0", lilac: "#b9a6ff", bone: "#fff6e2" };
 
   /* ---------- wagon & loco ---------- */
-  const wagon = (color, pax, label) => `
-    <div class="wagon" style="--c:${COLORS[color] || color}">
-      <div class="wagon__body">
-        <span class="wagon__win">${PAX[pax[0]]}</span><span class="wagon__win">${PAX[pax[1]]}</span>
-        <b class="wagon__label">${label}</b>
-      </div>
-      <i class="wheel"></i><i class="wheel"></i>
-    </div>`;
+  const ART = {
+    toile: `<svg viewBox="0 0 140 80" ${S}><rect x="0" y="0" width="140" height="80" fill="#fff6e2" stroke="none"/><circle cx="38" cy="42" r="23" fill="#ff4b2b"/><rect x="66" y="10" width="50" height="34" fill="#2338ff" transform="rotate(-8 91 27)"/><path d="M94 70 116 48 128 72z" fill="#ffc61a"/><path d="M8 66c14-16 26 8 40-6s22 6 34-4 16 10 26 0" fill="none" stroke-width="4"/><circle cx="104" cy="22" r="4" fill="${INK}" stroke="none"/></svg>`,
+    sculpt: `<svg viewBox="0 0 120 108" ${S}><path d="M60 4c-3 6 0 10 3 12M63 16c8-6 16-4 20 2-8 3-15 2-20-2z" fill="#6fe3b0"/><path d="M60 18c-10 0-16 10-16 22 0 8-16 16-16 34 0 16 14 24 32 24s32-8 32-24c0-18-16-26-16-34 0-12-6-22-16-22z" fill="#b9a6ff"/><ellipse cx="60" cy="58" rx="12" ry="9" fill="#fff"/><circle cx="62" cy="59" r="5" fill="${INK}" stroke="none"/><path d="M47 47q13-7 26 0" fill="none"/><path d="M44 82q16 10 32 0" fill="none"/><path d="M38 96h44" fill="none"/><circle cx="80" cy="74" r="4" fill="#ff9bd0" stroke="none"/><circle cx="40" cy="74" r="4" fill="#ff9bd0" stroke="none"/></svg>`,
+  };
+  const gear = `<div class="bogie"><i class="wheel"></i><i class="wheel"></i></div><div class="bogie bogie--r"><i class="wheel"></i><i class="wheel"></i></div><span class="buffer"></span><span class="buffer buffer--r"></span>`;
+  const plate = (label) => (label ? `<b class="wagon__plate">${label}</b>` : "");
+  const wagon = (color, pax, label, type = "pass") => {
+    const c = COLORS[color] || color;
+    if (type === "toile" || type === "sculpt") {
+      return `<div class="wagon wagon--flat" style="--c:${c}"><div class="cargo cargo--${type}">${ART[type]}</div><div class="wagon__deck">${plate(label)}</div>${gear}</div>`;
+    }
+    if (type === "fret") {
+      return `<div class="wagon wagon--fret" style="--c:${c}"><div class="wagon__roof"></div><div class="wagon__body"><span class="hatch">${PAX[pax[0]] || ""}</span><span class="slide-door"></span><span class="fragile">Fragile<br>art actuel</span>${plate(label)}</div>${gear}</div>`;
+    }
+    return `<div class="wagon" style="--c:${c}"><div class="wagon__roof"></div><div class="wagon__body"><span class="wagon__win">${PAX[pax[0]]}</span><span class="wagon__win">${PAX[pax[1]]}</span>${plate(label)}</div>${gear}</div>`;
+  };
 
+  const wheelSvg = (cx, cy, r) => `<g class="spin"><circle cx="${cx}" cy="${cy}" r="${r}" fill="#ff4b2b"/><circle cx="${cx}" cy="${cy}" r="${r - 5}" fill="#fff6e2" stroke-width="2.5"/><path d="M${cx} ${cy - r + 5}v${2 * r - 10}M${cx - r + 5} ${cy}h${2 * r - 10}M${cx - (r - 5) * 0.7} ${cy - (r - 5) * 0.7}l${(r - 5) * 1.4} ${(r - 5) * 1.4}M${cx + (r - 5) * 0.7} ${cy - (r - 5) * 0.7}l${-(r - 5) * 1.4} ${(r - 5) * 1.4}" fill="none" stroke-width="2.5"/><path d="M${cx - r * 0.55} ${cy + r * 0.25}a${r * 0.6} ${r * 0.6} 0 0 0 ${r * 1.1} 0z" fill="${INK}" stroke="none"/><circle cx="${cx}" cy="${cy}" r="4.5" fill="#ffc61a"/></g>`;
   const loco = (color) => `
     <div class="loco" style="--c:${COLORS[color]}">
-      <svg viewBox="0 0 300 176" ${S}>
-        <rect x="204" y="18" width="30" height="46" fill="${INK}"/><path d="M196 12h46l-6 14h-34z" fill="${INK}"/>
-        <rect x="110" y="56" width="184" height="74" rx="32" fill="${COLORS[color]}"/>
-        <rect x="14" y="26" width="112" height="108" rx="10" fill="${COLORS[color]}"/>
-        <rect x="4" y="16" width="132" height="16" rx="8" fill="${INK}"/>
-        <rect x="34" y="48" width="60" height="42" rx="8" fill="#bfe6ff"/>
-        <circle cx="168" cy="56" r="14" fill="#ffc61a"/>
-        <path d="M292 130l14 14h-24z" fill="${INK}"/>
+      <svg viewBox="0 0 320 180" ${S}>
+        <path d="M188 58 182 30 168 12h68l-14 18-6 28z" fill="${INK}"/><path d="M174 20h56" stroke="#ff4b2b" stroke-width="6"/>
+        <path d="M138 58c0-14 8-20 14-20s14 6 14 20z" fill="#ffc61a"/>
+        <path d="M118 30v-14h6v14" fill="#ffc61a"/>
+        <rect x="110" y="58" width="184" height="72" rx="32" fill="${COLORS[color]}"/>
+        <path d="M150 60v68M250 60v68" stroke="#ffc61a" stroke-width="7"/>
+        <path d="M150 60v68M250 60v68" fill="none" stroke-width="1.5"/>
+        <g fill="${INK}" stroke="none"><circle cx="126" cy="120" r="2.4"/><circle cx="140" cy="122" r="2.4"/><circle cx="264" cy="122" r="2.4"/><circle cx="278" cy="118" r="2.4"/></g>
+        <rect x="16" y="38" width="104" height="98" rx="8" fill="${COLORS[color]}"/>
+        <path d="M4 40Q62 10 132 40v8H4z" fill="${INK}"/>
+        <rect x="34" y="56" width="56" height="40" rx="9" fill="#bfe6ff"/>
+        <circle cx="62" cy="80" r="10" fill="#fff6e2"/><path d="M50 72h24l-3-8H53z" fill="#2338ff"/><path d="M55 84q7-5 14 0" fill="none" stroke-width="2.5"/>
+        <path d="M30 108h76M30 120h76" fill="none" stroke-width="2"/>
+        <rect x="286" y="42" width="22" height="18" rx="4" fill="${INK}"/><circle cx="302" cy="51" r="6" fill="#ffc61a"/>
+        <rect x="100" y="128" width="200" height="8" rx="3" fill="${INK}"/>
         <g class="eyes">
-          <circle class="eye" cx="210" cy="90" r="19" fill="#fff"/><circle class="pupil" cx="210" cy="90" r="8" fill="${INK}" stroke="none"/>
-          <circle class="eye" cx="257" cy="90" r="19" fill="#fff"/><circle class="pupil" cx="257" cy="90" r="8" fill="${INK}" stroke="none"/>
+          <circle class="eye" cx="210" cy="90" r="18" fill="#fff"/><circle class="pupil" cx="210" cy="90" r="7.5" fill="${INK}" stroke="none"/>
+          <circle class="eye" cx="257" cy="90" r="18" fill="#fff"/><circle class="pupil" cx="257" cy="90" r="7.5" fill="${INK}" stroke="none"/>
         </g>
-        <path d="M222 118q11 7 24 0" fill="none"/>
-        <g class="spin"><circle cx="72" cy="146" r="27" fill="#fff6e2"/><path d="M72 119v54M45 146h54M52 126l40 40M92 126l-40 40" stroke-width="3" fill="none"/><circle cx="72" cy="146" r="5" fill="${INK}"/></g>
-        <g class="spin"><circle cx="176" cy="152" r="19" fill="#fff6e2"/><path d="M176 133v38M157 152h38" fill="none"/><circle cx="176" cy="152" r="4" fill="${INK}"/></g>
-        <g class="spin"><circle cx="238" cy="152" r="19" fill="#fff6e2"/><path d="M238 133v38M219 152h38" fill="none"/><circle cx="238" cy="152" r="4" fill="${INK}"/></g>
+        <circle cx="196" cy="114" r="6" fill="#ff9bd0" stroke="none"/><circle cx="272" cy="114" r="6" fill="#ff9bd0" stroke="none"/>
+        <path d="M233 108c-6-7-20-7-26 2 6-1 9 3 13 6 7 3 13-1 13-6 0 5 6 9 13 6 4-3 7-7 13-6-6-9-20-9-26-2z" fill="${INK}"/>
+        <path d="M296 136l20 30h-34zM300 142l-8 22M308 146l-4 18" fill="#ffc61a"/>
+        ${wheelSvg(66, 150, 24)}${wheelSvg(150, 150, 24)}${wheelSvg(214, 150, 24)}${wheelSvg(272, 158, 15)}
+        <rect x="140" y="146" width="84" height="7" rx="3.5" fill="#cfd2e6"/>
       </svg>
       <span class="puff"></span><span class="puff"></span><span class="puff"></span>
     </div>`;
 
   document.querySelectorAll("[data-train]").forEach((el) => {
     const cfg = JSON.parse(el.dataset.train);
-    el.innerHTML = cfg.wagons.map((w) => wagon(w[0], [w[1], w[2]], w[3])).join("") + loco(cfg.loco);
+    el.innerHTML = cfg.wagons.map((w) => wagon(w[0], [w[1], w[2]], w[3], w[4])).join("") + loco(cfg.loco);
   });
 
   document.querySelectorAll("[data-pax]").forEach((el) => { el.innerHTML = PAX[el.dataset.pax]; });
@@ -150,7 +167,7 @@
   /* ---------- un train passe entre deux pages (il cache le changement) ---------- */
   const passage = document.createElement("div");
   passage.className = "passage"; passage.setAttribute("aria-hidden", "true");
-  passage.innerHTML = `<div class="track rolling">${[["tomato","eye","fish",""],["mustard","cow","moustache",""],["mint","egg","melon",""],["pink","ghost","eye",""]].map((w) => wagon(w[0], [w[1], w[2]], w[3])).join("")}${loco("lilac")}</div>`;
+  passage.innerHTML = `<div class="track rolling">${[["tomato","eye","fish","","pass"],["mustard","","","","toile"],["mint","egg","","","fret"],["pink","","","","sculpt"]].map((w) => wagon(w[0], [w[1], w[2]], w[3], w[4])).join("")}${loco("lilac")}</div>`;
   document.body.appendChild(passage);
   const store = (fn) => { try { return fn(); } catch (e) { return null; } };
   if (document.documentElement.classList.contains("arriving")) {

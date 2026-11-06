@@ -105,7 +105,7 @@ section { padding-block: clamp(3.5rem, 8vw, 7rem); }
 /* ============ En-tête : un train de liens ============ */
 .top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.2rem 2rem; padding-block: 1rem; }
 .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; font: 400 1.05rem/1.05 var(--f-display); padding: 0.55rem 1rem 0.55rem 0.7rem; --c: var(--bone); }
-.brand svg { width: 52px; height: 34px; flex: none; }
+.brand svg { width: 62px; height: 39px; flex: none; }
 .nav-train { display: flex; flex-wrap: wrap; gap: 16px 14px; list-style: none; margin: 0; padding: 0; }
 .nav-train li { position: relative; }
 .nav-train li:not(:last-child)::after { content: ""; position: absolute; right: -14px; top: 50%; width: 14px; height: 5px; background: var(--ink); }
@@ -175,7 +175,7 @@ section { padding-block: clamp(3.5rem, 8vw, 7rem); }
 }
 .track { position: absolute; display: flex; align-items: flex-end; gap: 12px; }
 .track--front { bottom: 14px; right: 4vw; z-index: 2; }
-.track--back { bottom: 88px; right: calc(4vw + 232px); z-index: 1; }
+.track--back { bottom: 88px; right: calc(4vw + 330px); z-index: 1; }
 .track--front { animation: arrive 2s var(--ease-out) backwards 0.25s; transition: transform 1.3s var(--ease-out); }
 .track--back { transition: transform 1.3s var(--ease-out) 0.15s; }
 .rails[data-lifted="true"] .track--front { transform: translateX(calc(100% + 8vw)); }
@@ -372,7 +372,7 @@ section { padding-block: clamp(3.5rem, 8vw, 7rem); }
   .rails .track { position: absolute; }
   .rails { min-height: 400px; margin-top: 1.2rem; }
   .rails::after { bottom: 8px; }
-  .track--back { right: calc(4vw + 232px); }
+  .track--back { right: calc(4vw + 330px); }
   .hero__row { flex-direction: column; }
 }
 @media (max-width: 560px) {
@@ -581,3 +581,83 @@ h2:not(.sub)::after {
 html.arriving body::after { content: ""; position: fixed; inset: 0; z-index: 94; background: var(--ink); animation: unstick 0.01s 1.4s forwards; }
 @keyframes unstick { to { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { .porthole { animation: none; } html.arriving body::after { display: none; } }
+
+/* ============ Trains, version détaillée ============ */
+:root { --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.04 .9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .1  0 0 0 0 .05  0 0 0 0 .3  0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E"); }
+.wagon { width: 210px; height: 142px; }
+.wagon:nth-child(odd) .wagon__body, .wagon:nth-child(odd) .cargo { rotate: -0.6deg; }
+.wagon:nth-child(even) .wagon__body, .wagon:nth-child(even) .cargo { rotate: 0.5deg; }
+.wagon__roof { position: absolute; top: 0; left: -6px; right: -6px; height: 17px; background: var(--ink); border-radius: 14px 14px 3px 3px; z-index: 2; }
+.wagon__roof::before { content: ""; position: absolute; top: -7px; left: 28%; width: 20px; height: 9px; background: var(--ink); border-radius: 4px 4px 0 0; box-shadow: 64px 0 0 var(--ink); }
+.wagon__body {
+  inset: 12px 0 24px; border-radius: 5px; padding: 0;
+  background-color: var(--c); background-image: var(--grain);
+}
+.wagon__body::before { display: none; }
+.wagon__body::after { /* bas de caisse rivé */
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 16px; border-top: 3px solid var(--ink);
+  background: radial-gradient(circle, rgb(255 255 255 / 0.6) 0 1.7px, transparent 2.2px) 4px 50% / 14px 100% repeat-x, color-mix(in srgb, var(--c) 62%, var(--ink));
+}
+.wagon__win { top: 10px; width: 64px; height: 50px; border-radius: 10px 10px 6px 6px; }
+.wagon__win:nth-of-type(1) { left: 18px; } .wagon__win:nth-of-type(2) { right: 18px; }
+.wagon__win::before { /* rideaux à festons */
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 11px; z-index: 1;
+  background: radial-gradient(circle at 50% 0, var(--pink) 0 6px, transparent 6.5px) 0 0 / 12px 11px repeat-x; border-top: 4px solid var(--tomato);
+}
+.wagon__win::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 58%, rgb(255 255 255 / 0.55) 58% 66%, transparent 66%); }
+.wagon__label { display: none; }
+.wagon__plate {
+  position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 3; white-space: nowrap;
+  background: var(--bone); color: var(--ink); border: 3px solid var(--ink); border-radius: 6px; padding: 3px 9px 2px;
+  font: 400 0.95rem/1.05 var(--f-display);
+}
+.wagon::after { top: auto; bottom: 40px; height: 5px; right: -14px; width: 14px; }
+.buffer { position: absolute; left: -8px; bottom: 34px; width: 9px; height: 16px; background: var(--ink); border-radius: 3px 0 0 3px; z-index: 1; }
+.buffer--r { left: auto; right: -8px; border-radius: 0 3px 3px 0; }
+.bogie { position: absolute; bottom: 0; left: 10px; width: 80px; height: 31px; }
+.bogie--r { left: auto; right: 10px; }
+.bogie::before { content: ""; position: absolute; left: 10px; right: 10px; top: 8px; height: 11px; background: var(--ink); border-radius: 4px; }
+.bogie .wheel, .wheel { width: 31px; height: 31px; border-width: 3px; bottom: 0;
+  background:
+    radial-gradient(circle, var(--mustard) 0 13%, var(--ink) 14% 20%, transparent 21%),
+    conic-gradient(var(--ink) 0 5%, transparent 5% 25%, var(--ink) 25% 30%, transparent 30% 50%, var(--ink) 50% 55%, transparent 55% 75%, var(--ink) 75% 80%, transparent 80%),
+    radial-gradient(circle, var(--bone) 0 60%, var(--tomato) 61%);
+}
+.bogie .wheel:nth-of-type(1) { left: 0; right: auto; } .bogie .wheel:nth-of-type(2) { right: 0; left: auto; }
+
+/* wagon de fret */
+.wagon--fret .wagon__body { background-image: var(--grain), repeating-linear-gradient(90deg, transparent 0 19px, color-mix(in srgb, var(--ink) 40%, transparent) 19px 22px); }
+.slide-door {
+  position: absolute; left: 50%; top: 6px; bottom: 19px; width: 66px; transform: translateX(-50%); border: 3px solid var(--ink); border-radius: 3px;
+  background:
+    linear-gradient(to top right, transparent calc(50% - 2px), var(--ink) calc(50% - 2px) calc(50% + 2px), transparent calc(50% + 2px)),
+    linear-gradient(to top left, transparent calc(50% - 2px), var(--ink) calc(50% - 2px) calc(50% + 2px), transparent calc(50% + 2px)),
+    color-mix(in srgb, var(--c) 75%, #fff);
+}
+.hatch { position: absolute; left: 10px; top: 8px; width: 40px; height: 34px; background: var(--sky); border: 3px solid var(--ink); border-radius: 6px; overflow: hidden; }
+.hatch svg { width: 100%; height: 100%; }
+.fragile { position: absolute; right: 6px; top: 10px; z-index: 2; font: 400 0.6rem/1.05 var(--f-stamp); text-transform: uppercase; color: #b81d08; background: rgb(255 246 226 / 0.85); border: 2px solid #b81d08; border-radius: 3px; padding: 2px 4px; transform: rotate(-11deg); text-align: center; }
+
+/* wagons plats qui transportent l'art */
+.wagon__deck { position: absolute; left: 0; right: 0; bottom: 24px; height: 28px; background-color: var(--c); background-image: var(--grain); border: 4px solid var(--ink); border-radius: 4px; }
+.wagon--flat .wagon__plate { bottom: 1px; font-size: 0.8rem; padding: 1px 7px; }
+.cargo { position: absolute; left: 50%; bottom: 52px; translate: -50% 0; }
+.cargo--toile { width: 156px; padding: 7px; background: var(--mustard); border: 3px solid var(--ink); box-shadow: inset 0 0 0 3px rgb(255 255 255 / 0.5); }
+.cargo--toile svg { width: 100%; height: auto; border: 2px solid var(--ink); }
+.cargo--toile::after { content: ""; position: absolute; left: 18%; right: 18%; bottom: -8px; height: 8px; background: repeating-linear-gradient(90deg, var(--ink) 0 12px, transparent 12px 72px); }
+.cargo--sculpt { width: 104px; }
+.cargo--sculpt svg { width: 100%; height: auto; overflow: visible; }
+
+/* locomotive */
+.loco { width: 320px; height: 180px; }
+.puff { left: 190px; top: 0; }
+.passage .loco .puff { display: none; }
+/* la voie du train caché, et ses plaques qui se tamponnent à la révélation */
+.rails::before { content: ""; position: absolute; left: 0; right: 0; bottom: 82px; height: 9px; border-top: 4px solid var(--ink); background: repeating-linear-gradient(90deg, var(--ink) 0 8px, transparent 8px 40px); }
+.track--back .wagon__plate { transition: opacity 0.2s, transform 0.45s var(--ease-out); }
+.rails:not([data-lifted="true"]) .track--back .wagon__plate { opacity: 0; transform: translateX(-50%) scale(1.7) rotate(-8deg); }
+.rails[data-lifted="true"] .track--back .wagon:nth-child(1) .wagon__plate { transition-delay: 0.55s; }
+.rails[data-lifted="true"] .track--back .wagon:nth-child(2) .wagon__plate { transition-delay: 0.68s; }
+.rails[data-lifted="true"] .track--back .wagon:nth-child(3) .wagon__plate { transition-delay: 0.81s; }
+.rails[data-lifted="true"] .track--back .wagon:nth-child(4) .wagon__plate { transition-delay: 0.94s; }
+.rails[data-lifted="true"] .track--back { transform: translateX(22vw) translateY(6px); }

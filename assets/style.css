@@ -47,7 +47,7 @@ body {
 body::before {
   content: "";
   position: fixed; inset: 0; z-index: 50; pointer-events: none;
-  opacity: 0.16; mix-blend-mode: multiply;
+  opacity: 0.1; mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 ::selection { background: var(--ink); color: var(--mustard); }
@@ -92,7 +92,7 @@ h3 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); margin-bottom: 0.5rem; }
 
 /* bande de couleur pleine largeur, bord supérieur déchiré */
 .band { position: relative; background: var(--band, var(--ink)); color: var(--ink); padding-block: clamp(4rem, 9vw, 8rem); }
-.band.torn-top::before {
+.torn-top::before {
   content: ""; position: absolute; left: 0; right: 0; top: -39px; height: 40px;
   background: inherit; clip-path: var(--torn-strip, none);
 }
@@ -161,7 +161,7 @@ section { padding-block: clamp(3.5rem, 8vw, 7rem); }
 .ticket[aria-disabled="true"] { background: repeating-linear-gradient(135deg, var(--bone) 0 10px, #e9dcc0 10px 20px); cursor: not-allowed; opacity: 0.85; }
 
 /* ============ Hero ============ */
-.hero { padding-block: 0 0; min-height: min(100svh, 980px); display: flex; flex-direction: column; overflow-x: clip; }
+.hero { padding-block: 0; display: flex; flex-direction: column; overflow-x: clip; }
 .hero__body { flex: none; }
 .hero__row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 1.6rem 2.4rem; margin-bottom: 1.5rem; }
 .lede { max-width: 34rem; --c: var(--bone); --r: -1.2deg; font-size: 1.15rem; line-height: 1.45; font-weight: 520; }
@@ -545,3 +545,39 @@ html { overflow-x: clip; }
   .pax { right: 4px; }
   .nav-train li:not(:last-child)::after { display: none; }
 }
+
+/* ============ Polish : signature commune ============ */
+.c-sky { --c: var(--sky); }
+.foot.torn-top { margin-top: 40px; }
+/* chaque titre de section roule sur un bout de voie */
+h2:not(.sub)::after {
+  content: ""; display: block; width: min(190px, 45%); height: 12px; margin-top: 0.6rem;
+  border-top: 4px solid currentColor; background: repeating-linear-gradient(90deg, currentColor 0 5px, transparent 5px 19px); opacity: 0.85;
+}
+.foot h2::after, .scrap h2::after, .annonce h2::after { display: none; }
+
+/* en-têtes de pages : mots-rançon + hublot */
+.page-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1rem 3rem; }
+.ransom--page { font-size: clamp(2.2rem, 6.4vw, 5.2rem); margin: 0 0 1.4rem; }
+.ransom--page .scrap { padding: 0.1em 0.22em 0.04em; }
+.porthole {
+  width: clamp(150px, 17vw, 230px); aspect-ratio: 1; border-radius: 50%; background: var(--sky); overflow: hidden;
+  border: 8px solid var(--ink); box-shadow: inset 0 0 0 5px #fff, 0 12px 18px rgb(12 6 70 / 0.3); transform: rotate(6deg);
+  animation: bob 3.6s ease-in-out infinite;
+}
+.porthole span { display: block; width: 100%; height: 100%; }
+.porthole svg { width: 100%; height: 100%; transform: scale(0.92); }
+@keyframes bob { 50% { transform: rotate(3deg) translateY(-8px); } }
+@media (max-width: 700px) { .page-head { grid-template-columns: 1fr; } .porthole { display: none; } }
+
+/* passage du train entre deux pages */
+.passage { position: fixed; inset: 0; z-index: 95; pointer-events: none; background: var(--ink); display: grid; place-items: center; transform: translateX(-101%); overflow: hidden; }
+.passage::after { content: ""; position: absolute; left: 0; right: 0; top: calc(50% + 78px); height: 12px; border-top: 4px solid #fff; background: repeating-linear-gradient(90deg, #fff 0 8px, transparent 8px 40px); opacity: 0.5; }
+.passage .track { position: relative; transform: scale(0.85); }
+.passage.is-in { animation: passIn 0.42s cubic-bezier(0.7, 0, 0.84, 0) forwards; }
+.passage.is-out { animation: passOut 0.7s var(--ease-out) forwards; }
+@keyframes passIn { from { transform: translateX(-101%); } to { transform: none; } }
+@keyframes passOut { from { transform: none; } to { transform: translateX(101%); } }
+html.arriving body::after { content: ""; position: fixed; inset: 0; z-index: 94; background: var(--ink); animation: unstick 0.01s 1.4s forwards; }
+@keyframes unstick { to { opacity: 0; visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .porthole { animation: none; } html.arriving body::after { display: none; } }

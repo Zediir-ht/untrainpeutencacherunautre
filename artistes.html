@@ -7,7 +7,7 @@
 <meta name="description" content="Les artistes-adhérents de l’association Un train peut en cacher un autre, et tous ceux passés par le train depuis 2009.">
 <meta name="theme-color" content="#2338ff">
 <link rel="stylesheet" href="assets/style.css">
-<script>document.documentElement.classList.add("js")</script>
+<script>document.documentElement.classList.add("js");try{if(sessionStorage.getItem("utpecua-pass"))document.documentElement.classList.add("arriving")}catch(e){}</script>
 </head>
 <body data-page="artistes">
 <a class="skip" href="#main">Aller au contenu</a>
@@ -17,10 +17,10 @@
   <nav class="nav-wrap" id="menu" aria-label="Navigation principale"><ul class="nav-train " aria-label="Rubriques principales"><li><a href="index.html">Accueil</a></li><li><a href="actualite.html">Actualité</a></li><li><a href="artistes.html" aria-current="page">Les artistes</a></li><li><a href="historique.html">Historique</a></li><li><a href="adherer.html">Adhérer</a></li><li><a href="contact.html">Contact</a></li></ul><ul class="nav-train nav-train--freight" aria-label="Autres rubriques"><li><a href="photos.html">Photos / vidéos</a></li><li><a href="cours.html">Cours et stages</a></li><li><a href="livredor.html">Livre d’or</a></li><li><a href="boutique.html">Boutique</a></li><li><a href="liens.html">Liens</a></li></ul></nav>
 </header>
 <main id="main">
-<div class="wrap page-head">
-  <h1>Les voyageurs</h1>
+<div class="wrap page-head"><div class="page-head__txt">
+  <h1 class="ransom ransom--page" aria-label="Les voyageurs"><span class="scrap c-tomato" style="--r:-2.2deg" aria-hidden="true">Les</span><span class="scrap c-sky" style="--r:1.6deg" aria-hidden="true">voyageurs</span></h1>
   <p class="scrap lede" style="--c:var(--bone)">Liste exhaustive des artistes-adhérents : ceux qui sont à jour de leur cotisation à la fin du printemps 2026, puis tous ceux passés par le train depuis sa création en 2009. Il y a lieu de tous les féliciter pour l’excellent travail qu’ils donnent ou ont donné.</p>
-</div>
+</div><div class="porthole" aria-hidden="true"><span data-pax="moustache"></span></div></div>
 
 <div class="wrap">
   <div class="finder">
@@ -44,7 +44,7 @@
   <p class="scrap" style="--c:var(--bone);--r:-0.6deg;max-width:52rem">Nos félicitations s’adressent également à tous ceux qui, par leur soutien moral, matériel et financier, permettent à l’association d’offrir aux populations de belles, gratuites et conviviales expositions : la région Occitanie, le département du Lot, la CCCS pendant un certain temps, nos adhérents « solidaires » ou « amis des arts » et quelques autres personnes sensibles et avisées.</p>
 </section>
 </main>
-<footer class="foot">
+<footer class="foot torn-top">
   <div class="wrap">
     <div class="cols">
       <div>

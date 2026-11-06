@@ -83,7 +83,7 @@
     return `polygon(${pts.join(",")})`;
   }
   document.querySelectorAll(".scrap, .lift").forEach((el, i) => el.style.setProperty("--torn", tornPolygon(i * 977 + 13, el.classList.contains("scrap--tight") ? 3 : 6)));
-  document.querySelectorAll(".band.torn-top").forEach((el, i) => el.style.setProperty("--torn-strip", tornStrip(i * 31 + 7)));
+  document.querySelectorAll(".torn-top").forEach((el, i) => el.style.setProperty("--torn-strip", tornStrip(i * 31 + 7)));
 
   /* ---------- yeux googly ---------- */
   const eyes = [...document.querySelectorAll(".eyes")];
@@ -146,6 +146,30 @@
       empty.dataset.show = String(q && n === 0);
     });
   }
+
+  /* ---------- un train passe entre deux pages (il cache le changement) ---------- */
+  const passage = document.createElement("div");
+  passage.className = "passage"; passage.setAttribute("aria-hidden", "true");
+  passage.innerHTML = `<div class="track rolling">${[["tomato","eye","fish",""],["mustard","cow","moustache",""],["mint","egg","melon",""],["pink","ghost","eye",""]].map((w) => wagon(w[0], [w[1], w[2]], w[3])).join("")}${loco("lilac")}</div>`;
+  document.body.appendChild(passage);
+  const store = (fn) => { try { return fn(); } catch (e) { return null; } };
+  if (document.documentElement.classList.contains("arriving")) {
+    store(() => sessionStorage.removeItem("utpecua-pass"));
+    passage.classList.add("is-out");
+    document.documentElement.classList.remove("arriving");
+    passage.addEventListener("animationend", () => passage.classList.remove("is-out"), { once: true });
+  }
+  addEventListener("pageshow", (e) => { if (e.persisted) passage.classList.remove("is-in"); });
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a[href]");
+    if (!a || reduce || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const href = a.getAttribute("href");
+    if (a.target === "_blank" || /^(#|mailto:|tel:|https?:)/.test(href)) return;
+    e.preventDefault();
+    store(() => sessionStorage.setItem("utpecua-pass", "1"));
+    passage.classList.add("is-in");
+    setTimeout(() => { location.href = a.href; }, 440);
+  });
 
   /* ---------- formulaire démo ---------- */
   const form = document.querySelector("[data-demo-form]");
